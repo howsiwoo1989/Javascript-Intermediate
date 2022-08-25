@@ -1,0 +1,30 @@
+//truthy
+let a = Infinity; // [], {}, "0"....
+
+if (a) {
+  console.log("TRUE");
+} else {
+  console.log("FALSE");
+}
+
+//falsy
+let b = undefined; //undefined, null, 0..
+
+if (b) {
+  console.log("TRUE");
+} else {
+  console.log("FALSE");
+}
+
+const getName = (person) => {
+    if (!person) {// false Not=> true ( null과 undefined )
+        return "객체가 아닙니다";
+    }
+    return person.name;
+};
+
+let person = undefined;
+//let person = { name: "우현진" };
+const name = getName(person);
+
+console.log(name);

@@ -1,0 +1,64 @@
+<자바스크립트의 싱글 스레드 작업 수행 방식>
+자바스크립트는 코드가 작성 된 순서대로 작업을 처리함
+이전 작업이 진행 중 일 때는 다음 작업을 수행하지 않고 기다림
+먼저 작성된 코드를 먼저 다 실행하고 나서 뒤에 작성된 코드를 실행한다
+-> 동기 방식의 처리 (블로킹 방식)
+
+동기적 처리의 단점은 하나의 작업이 너무 오래 걸리게 될 시,
+모든 작업이 오래 걸리는 하나의 작업이 종료되기 전 까지 올 스탑 되기 때문에, 전반적인 흐름이 느려진다
+-> 동기처리 방식의 문제점
+
+//멀티 쓰레드
+코드를 실행하는 일꾼 Thread를 여러개 사용하는 방식
+ㄴ 자바스크립트는 싱글 쓰레드로 동작하기 때문에 불가능
+
+==> 싱글 쓰레드 방식을 이용하면서, 동기적 작접의 단점을 극복하기 위해
+여러 개의 작업을 동시에 실행시킴
+즉, 먼저 작성 된 코드의 결과를 기다리지 않고 다음 코드를 바로 실행함
+-> 비동기 작업
+
+// function taskA() {
+// console.log("A 작업 끝");
+// }
+// taskA();
+function taskA(a, b, cb) {
+    setTimeout(() => {
+        const res = a + b;
+        cb(res);
+    }, 3000);
+}
+function taskB(a, cb) {
+    setTimeout(() => {
+        const res = a * 2;
+        cb(res);
+    }, 1000);
+}
+function taskC(a, cb) {
+    setTimeout(() => {
+        const res = a * -1;
+        cb(res);
+    }, 2000);
+}
+
+taskA(3, 4, (res) => {
+    console.log("A TASK RESULT : ", res);
+});
+taskB(7, (res) => {
+    console.log("B TASK RESULT : ", res);
+});
+taskC(14, (res) => {
+    console.log("C TASK RESULT : ", res);
+});
+
+//콜백지옥
+taskA(4, 5, (a_res) => {
+    console.log("A RESULT : ", a_res);
+    taskB(a_res, (b_res) => {
+        console.log("B RESULT : ", b_res);
+        taskC(b_res, (c_res) => {
+            console.log("C RESULT : ", c_res);
+        });
+    });
+});
+
+console.log("코드 끝");

@@ -1,0 +1,14 @@
+//console.log(true && true);
+//console.log(true || false);
+//console.log(!true);
+
+//단락회로 평가
+const getName = (person) => {
+  const name = person && person.name; //이름저장
+  return name || "객체가 아닙니다"; //truthy
+};
+
+let person = { name: "우현진" };
+//person = null;
+const name = getName(person);
+console.log(name);

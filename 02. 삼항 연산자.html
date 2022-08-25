@@ -1,0 +1,41 @@
+let a = [0, 23, 55];
+// if (a >= 0) {
+//   console.log("양수");
+// } else {
+//   console.log("음수");
+// }
+
+// a >= 0 ? console.log("양수") : console.log("음수");
+// //조건식 ? 참일때 수행식 : 거짓일때 수행식
+
+// if (a.length === 0) {
+//   console.log("빈배열");
+// } else {
+//   console.log("배열 있음");
+// }
+
+//a.length == 0 ? console.log("빈배열") : console.log("배열있음");
+//const arrStatus = a.length == 0 ? "빈배열" : "배열있음";
+//console.log(arrStatus);
+
+const result = a ? true : false;
+console.log(result);
+
+// TODO : 학점 계산 프로그램
+// 90점 이상 A+
+// 50점 이상 B+
+// 둘다 아니면 F
+
+let score = 58;
+
+// const result = score >= 90 ? "A+" : score >= 50 ? "B+" : "F";
+// console.log(result);
+
+//중첩 삼항연산자는 if로 표현이 좀 더 가독성 좋음
+if (score >= 90) {
+  console.log("A+");
+} else if (score >= 50) {
+  console.log("B+");
+} else {
+  console.log("F");
+}

@@ -1,0 +1,25 @@
+// async(에이씽크)
+function delay(ms) {
+    return new Promise((resolve) => {
+        // setTimeout(()=>{
+        // resolve();
+        // }, ms);
+        setTimeout(resolve, ms);
+    });
+}
+
+// Promise 리턴 (비동기처리, resolve 값)
+async function helloAsync() {
+    // return delay(3000).then(() => {
+        // return "hello Async";
+    // });
+    await delay(3000); //await 비동기 (async 붙은 함수에서만 사용가능)
+    return "hello Async";
+}
+
+async function main() {
+    const res = await helloAsync();
+    console.log(res);
+}
+
+main();

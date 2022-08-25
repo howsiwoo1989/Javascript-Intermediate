@@ -1,0 +1,16 @@
+//API
+//응용 프로그램 프로그래밍 인터페이스
+웹브라우저(클라이언트) --[데이터요청]--> 서버 --[데이터검색]--> 데이터베이스
+데이터베이스 --[데이터찾기]--> 서버 --[요청데이터전달]--> 웹브라우저(클라이언트)
+
+//API 호출 : 데이터 반환 목적
+
+//오픈 API : https://jsonplaceholder.typicode.com/
+
+async function getData() {
+    let rawresponse     = await fetch("https://jsonplaceholder.typicode.com/posts");
+    let jsonResponse    = await rawresponse.json();
+    console.log(jsonResponse);
+}
+
+getData();
